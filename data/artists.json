@@ -1,0 +1,95 @@
+{
+  "artists": [
+    {
+      "slug": "oscar-bony",
+      "name": "Oscar Bony",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "camille-bree",
+      "name": "Camille Brée",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "anna-de-castro-barbosa",
+      "name": "Anna de Castro Barbosa",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "juan-gugger",
+      "name": "Juan Gugger",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "helene-janicot",
+      "name": "Hélène Janicot",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "dilara-koz",
+      "name": "Dilara Koz",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "seung-won-kwon",
+      "name": "Seung Won Kwon",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "adrien-lagrange",
+      "name": "Adrien Lagrange",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "patricio-lima-quintana",
+      "name": "Patricio Lima Quintana",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "lyz-parayzo",
+      "name": "Lyz Parayzo",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "hanna-rochereau",
+      "name": "Hanna Rochereau",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "mick-schmitt",
+      "name": "Mick Schmitt",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    },
+    {
+      "slug": "taras",
+      "name": "Taras",
+      "years": "",
+      "discipline": "",
+      "origin": ""
+    }
+  ]
+}
