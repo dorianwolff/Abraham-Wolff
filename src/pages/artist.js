@@ -2,12 +2,24 @@ import { loadArtistBio } from '../data.js';
 import { mountPage, el, externalLink } from '../ui.js';
 import { t } from '../i18n.js';
 
+function resolveAssetHref(href) {
+  const raw = String(href || '');
+  const normalized = raw
+    .replace(/^\.\//, '')
+    .replace(/^\//, '')
+    .replace(/^resources\/portfolios\//, 'resources/')
+    .replace(/^\.\/resources\/portfolios\//, 'resources/')
+    .replace(/^\.\/resources\//, 'resources/');
+
+  const basePath = window.location.pathname.endsWith('/')
+    ? window.location.pathname
+    : `${window.location.pathname}/`;
+
+  return new URL(normalized, `${window.location.origin}${basePath}`).toString();
+}
+
 function pdfBlock(title, href) {
-  const normalizedHref = String(href || '')
-    .replace(/^\.\//, '/')
-    .replace(/^\/resources\/portfolios\//, '/resources/')
-    .replace(/^\.\/resources\/portfolios\//, '/resources/');
-  const safeHref = encodeURI(normalizedHref);
+  const safeHref = resolveAssetHref(href);
   const obj = document.createElement('object');
   obj.className = 'pdf-embed';
   obj.setAttribute('data', safeHref);
