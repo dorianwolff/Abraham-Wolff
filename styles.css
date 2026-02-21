@@ -795,6 +795,91 @@ body.page-about .content-card {
   margin: 8px 0 28px;
 }
 
+.arrow-wheel-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0 28px;
+}
+
+.arrow-wheel-svg {
+  width: min(720px, 88vw);
+  height: auto;
+  color: rgba(255, 255, 255, 0.92);
+  display: block;
+  margin: 0 auto;
+  overflow: visible;
+  filter:
+    drop-shadow(0 10px 40px rgba(0, 0, 0, 0.45))
+    drop-shadow(0 0 1px rgba(255, 255, 255, 0.15));
+  animation: none;
+}
+
+.arrow-wheel-rotor {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: none;
+}
+
+.arrow-wheel-arcs {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: none;
+}
+
+.arrow-wheel-labels {
+  transform-box: view-box;
+  transform-origin: 50% 50%;
+  animation: none;
+}
+
+.arrow-wheel-label {
+  transform-box: view-box;
+  transform-origin: center;
+  animation: none;
+}
+
+.arrow-wheel-name {
+  font-family: ui-serif, Georgia, 'Times New Roman', Times, serif;
+  font-size: 20px;
+  letter-spacing: 0.02em;
+  fill: currentColor;
+}
+
+.arrow-wheel-arc {
+  opacity: 0.9;
+}
+
+@keyframes wheel-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes wheel-counter {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .arrow-wheel-svg {
+    animation: none;
+  }
+
+  .arrow-wheel-rotor,
+  .arrow-wheel-arcs,
+  .arrow-wheel-labels,
+  .arrow-wheel-label {
+    animation: none;
+  }
+}
+
 .hero-img {
   width: min(520px, 80vw);
   height: auto;
