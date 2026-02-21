@@ -16,7 +16,7 @@ const DICT = {
     'nav.practical': 'Practical info',
 
     'home.subtitle': 'Catalog',
-    'home.dates': 'Dates coming soon',
+    'home.dates': 'Public opening\n14th March, 18h - 21h',
     'home.tile_exhibition_title': 'Exhibition text',
     'home.tile_exhibition_sub': 'Read the curatorial text',
     'home.tile_artists_title': 'Participating artists',
@@ -76,7 +76,7 @@ const DICT = {
     'nav.practical': 'Infos pratiques',
 
     'home.subtitle': 'Catalogue',
-    'home.dates': 'Dates \u00e0 venir',
+    'home.dates': 'Public opening\n14th March, 18h - 21h',
     'home.dates_label': 'Dates',
     'home.tile_exhibition_title': "Texte d'exposition",
     'home.tile_exhibition_sub': 'Lire le texte de commissariat',

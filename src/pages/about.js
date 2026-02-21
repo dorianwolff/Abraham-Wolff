@@ -7,12 +7,12 @@ export async function renderAbout(app) {
     {
       title: t('about.title'),
       navActive: 'about',
+      bodyClass: 'page-about',
     },
     [
       sectionCard(t('about.curators_title'), [
         el('div', { class: 'curators' }, [
-          el('div', { class: 'curators-names' }, ['Julia Tavares']),
-          el('div', { class: 'curators-names' }, ['Amalia Mytilineou']),
+          el('div', { class: 'curators-names' }, ['Amalia Mytilineou & Julia Tavares']),
         ]),
       ]),
       sectionCard(t('section.about'), [
