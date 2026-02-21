@@ -1,15 +1,25 @@
-import { mountPage, sectionCard, textBlock, el } from '../ui.js';
+import { mountPage, el } from '../ui.js';
 import { t } from '../i18n.js';
+import { arrowWheel } from '../ui/arrowWheel.js';
 
 export async function renderHomepage(app) {
-  const heroWrap = el('div', { class: 'hero-img-wrap' }, [
-    el('img', {
-      class: 'hero-img',
-      src: './Images/homepage.png',
-      alt: 'Exhibition view',
-      loading: 'eager',
-    }),
-  ]);
+  const names = [
+    'Oscar Bony',
+    'Taras',
+    'Camille Brée',
+    'Anna de Castro Barbosa',
+    'Juan Gugger',
+    'Hélène Janicot',
+    'Dilara Koz',
+    'Adrien Lagrange',
+    'Seung Won Kwon',
+    'Patricio Lima Quintana',
+    'Lyz Parayzo',
+    'Hanna Rochereau',
+    'Mick Schmitt',
+  ];
+
+  const heroWrap = arrowWheel(names);
 
   const dateParts = String(t('home.dates')).split('\n');
   const dateChildren = [];
