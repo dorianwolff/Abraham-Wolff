@@ -97,7 +97,8 @@ const router = new Router({
   onAfterNavigate: () => {
     requestAnimationFrame(() => {
       window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
-      updateGlyphs();
+      syncGlyphMode();
+      if (glyphsEnabled) updateGlyphTargets();
     });
   },
 });
@@ -463,10 +464,62 @@ function onScroll() {
   });
 }
 
-window.addEventListener('scroll', onScroll, { passive: true });
-window.addEventListener('resize', updateGlyphTargets);
+let glyphsEnabled = false;
+let glyphListenersAttached = false;
+
+function attachGlyphListeners() {
+  if (glyphListenersAttached) return;
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', updateGlyphTargets);
+  glyphListenersAttached = true;
+}
+
+function detachGlyphListeners() {
+  if (!glyphListenersAttached) return;
+  window.removeEventListener('scroll', onScroll);
+  window.removeEventListener('resize', updateGlyphTargets);
+  glyphListenersAttached = false;
+}
+
+function setGlyphsVisible(visible) {
+  const stage = document.getElementById('stage');
+  if (!stage) return;
+  stage.style.display = visible ? '' : 'none';
+}
+
+function stopGlyphAnimation() {
+  if (raf) {
+    cancelAnimationFrame(raf);
+    raf = 0;
+  }
+  if (glyphAnimRaf) {
+    cancelAnimationFrame(glyphAnimRaf);
+    glyphAnimRaf = 0;
+  }
+}
+
+function syncGlyphMode() {
+  const path = router.getPath();
+  const shouldEnable = path === '/artists';
+  if (shouldEnable === glyphsEnabled) return;
+
+  glyphsEnabled = shouldEnable;
+
+  if (glyphsEnabled) {
+    setGlyphsVisible(true);
+    attachGlyphListeners();
+    glyphCurrentP = getGlyphScrollProgress();
+    glyphTargetP = glyphCurrentP;
+    renderGlyphs(glyphCurrentP);
+  } else {
+    detachGlyphListeners();
+    stopGlyphAnimation();
+    setGlyphsVisible(false);
+  }
+}
 
 window.addEventListener('catalog:count', (e) => {
+  if (!glyphsEnabled) return;
   const count = e?.detail?.count ?? 0;
   const seed = e?.detail?.seed;
   rebuildGlyphs(count, seed);
@@ -476,13 +529,11 @@ window.addEventListener('catalog:count', (e) => {
 });
 
 window.addEventListener('catalog:scrollEnd', (e) => {
+  if (!glyphsEnabled) return;
   const v = Number(e?.detail?.scrollEnd);
   scrollEndTarget = Number.isFinite(v) && v > 0 ? v : null;
   updateGlyphTargets();
 });
 
 router.start();
-rebuildGlyphs(6, Date.now());
-glyphCurrentP = getGlyphScrollProgress();
-glyphTargetP = glyphCurrentP;
-renderGlyphs(glyphCurrentP);
+syncGlyphMode();

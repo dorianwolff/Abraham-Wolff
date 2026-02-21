@@ -147,17 +147,17 @@ body {
 .nav-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 20px;
 }
 
 .nav-link {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border: var(--thin) solid var(--ink);
-  border-radius: 999px;
-  padding: 10px 14px;
-  background: rgba(10, 18, 16, 0.62);
+  border: 0;
+  border-radius: 0;
+  padding: 6px 0;
+  background: transparent;
   text-decoration: none;
   color: var(--ink);
   font-size: 12px;
@@ -176,6 +176,7 @@ body {
 
 .nav-link.is-active {
   opacity: 1;
+  color: #fff;
 }
 
 .lang-toggle {
@@ -413,6 +414,11 @@ body {
   background: rgba(10, 18, 16, 0.62);
 }
 
+body.page-about .content-card {
+  border: 0;
+  background: transparent;
+}
+
 .content-card-title {
   margin: 0 0 10px;
   font-size: 12px;
@@ -465,13 +471,15 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  border: var(--thin) solid var(--ink);
-  border-radius: 999px;
-  padding: 12px 16px;
-  background: rgba(10, 18, 16, 0.62);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
   cursor: pointer;
   width: fit-content;
   transition: transform 300ms var(--ease);
+  color: #fff;
+  text-decoration: none;
 }
 
 .back:hover {
@@ -493,10 +501,11 @@ body {
 
 .bio h1 {
   margin: 0 0 8px;
-  font-size: clamp(22px, 3.6vw, 46px);
+  font-size: clamp(20px, 2.8vw, 34px);
   line-height: 1.04;
   letter-spacing: 0.01em;
   text-transform: none;
+  font-weight: 300;
 }
 
 .bio .byline {

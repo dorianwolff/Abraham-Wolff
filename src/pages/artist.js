@@ -3,7 +3,11 @@ import { mountPage, el, externalLink } from '../ui.js';
 import { t } from '../i18n.js';
 
 function pdfBlock(title, href) {
-  const safeHref = encodeURI(href);
+  const normalizedHref = String(href || '')
+    .replace(/^\.\//, '/')
+    .replace(/^\/resources\/portfolios\//, '/resources/')
+    .replace(/^\.\/resources\/portfolios\//, '/resources/');
+  const safeHref = encodeURI(normalizedHref);
   const obj = document.createElement('object');
   obj.className = 'pdf-embed';
   obj.setAttribute('data', safeHref);
