@@ -1,6 +1,6 @@
 import { loadArtistBio } from '../data.js';
 import { mountPage, el, externalLink } from '../ui.js';
-import { t } from '../i18n.js';
+import { getLang, t } from '../i18n.js';
 
 function resolveAssetHref(href) {
   const raw = String(href || '');
@@ -27,10 +27,10 @@ function pdfBlock(title, href) {
   obj.textContent = 'PDF cannot be displayed.';
 
   return el('div', { class: 'pdf-asset' }, [
+    el('div', { class: 'pdf-preview' }, [obj]),
     el('div', { class: 'pdf-actions' }, [
       el('a', { class: 'pdf-download', href: safeHref, download: '' }, [t('pdf.download')]),
     ]),
-    el('div', { class: 'pdf-preview' }, [obj]),
   ]);
 }
 
@@ -41,6 +41,14 @@ export async function renderArtist(app, { slug }) {
   } catch {
     bio = { name: slug, years: '', origin: '', discipline: '', paragraphs: [] };
   }
+
+  const getBioParagraphs = () => {
+    const lang = getLang();
+    const byLang = bio?.bios && typeof bio.bios === 'object' ? bio.bios : null;
+    const candidate = byLang ? byLang[lang] : null;
+    const paras = Array.isArray(candidate) ? candidate : Array.isArray(bio?.paragraphs) ? bio.paragraphs : [];
+    return paras.filter(Boolean);
+  };
 
   const pageChildren = [];
 
@@ -104,8 +112,15 @@ export async function renderArtist(app, { slug }) {
     bioCard.appendChild(media);
   }
 
-  const paras = Array.isArray(bio.paragraphs) ? bio.paragraphs : [];
-  for (const p of paras) bioCard.appendChild(el('p', {}, [p]));
+  const bioText = el('div', { class: 'bio-text' });
+  const renderBioText = () => {
+    bioText.innerHTML = '';
+    const paras = getBioParagraphs();
+    for (const p of paras) bioText.appendChild(el('p', {}, [p]));
+  };
+  renderBioText();
+  window.addEventListener('i18n:change', renderBioText);
+  bioCard.appendChild(bioText);
 
   pageChildren.push(bioCard);
 

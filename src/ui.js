@@ -146,9 +146,9 @@ function moonIcon() {
 
 function getTheme() {
   try {
-    return localStorage.getItem('theme') || 'dark';
+    return localStorage.getItem('theme') || 'light';
   } catch {
-    return 'dark';
+    return 'light';
   }
 }
 

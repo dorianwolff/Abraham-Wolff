@@ -38,7 +38,7 @@ const DICT = {
     'artists.title': 'Participating artists',
     'artists.open_bio': 'Open bio',
 
-    'artist.back': '\u2190  Participating artists',
+    'artist.back': '\u2190  Back',
     'artist.website': 'Website',
     'artist.born': 'Born',
     'artist.based': 'Based in',
@@ -99,7 +99,7 @@ const DICT = {
     'artists.title': 'Artistes participant\u00b7e\u00b7s',
     'artists.open_bio': 'Ouvrir la bio',
 
-    'artist.back': '\u2190  Artistes participant\u00b7e\u00b7s',
+    'artist.back': '\u2190  Retour',
     'artist.website': 'Site web',
     'artist.born': 'N\u00e9\u00b7e',
     'artist.based': 'Bas\u00e9\u00b7e \u00e0',
