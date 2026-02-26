@@ -28,6 +28,7 @@ export function mountPage(app, { title, subtitle, navActive, bodyClass } = {}, c
 
   const shell = el('section', { class: 'shell fade-in' });
   shell.appendChild(siteNav(navActive));
+  ensureThemeSideToggle();
   ensureLangSideToggle();
 
   if (title || subtitle) {
@@ -87,6 +88,106 @@ function ensureLangSideToggle() {
   });
 
   document.body.appendChild(toggle);
+}
+
+function sunIcon() {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '18');
+  svg.setAttribute('height', '18');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.8');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+
+  const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+  circle.setAttribute('cx', '12');
+  circle.setAttribute('cy', '12');
+  circle.setAttribute('r', '4');
+  svg.appendChild(circle);
+
+  const rays = [
+    'M12 2v2',
+    'M12 20v2',
+    'M4.93 4.93l1.41 1.41',
+    'M17.66 17.66l1.41 1.41',
+    'M2 12h2',
+    'M20 12h2',
+    'M4.93 19.07l1.41-1.41',
+    'M17.66 6.34l1.41-1.41',
+  ];
+
+  for (const d of rays) {
+    const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    p.setAttribute('d', d);
+    svg.appendChild(p);
+  }
+
+  return svg;
+}
+
+function moonIcon() {
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('viewBox', '0 0 24 24');
+  svg.setAttribute('width', '18');
+  svg.setAttribute('height', '18');
+  svg.setAttribute('fill', 'none');
+  svg.setAttribute('stroke', 'currentColor');
+  svg.setAttribute('stroke-width', '1.8');
+  svg.setAttribute('stroke-linecap', 'round');
+  svg.setAttribute('stroke-linejoin', 'round');
+
+  const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+  p.setAttribute('d', 'M21 12.8A8.5 8.5 0 0 1 11.2 3a6.9 6.9 0 1 0 9.8 9.8Z');
+  svg.appendChild(p);
+  return svg;
+}
+
+function getTheme() {
+  try {
+    return localStorage.getItem('theme') || 'dark';
+  } catch {
+    return 'dark';
+  }
+}
+
+function setTheme(theme) {
+  const t = theme === 'light' ? 'light' : 'dark';
+  document.body.classList.toggle('theme-light', t === 'light');
+  try {
+    localStorage.setItem('theme', t);
+  } catch {
+    // ignore
+  }
+
+  const btn = document.getElementById('theme-toggle');
+  if (btn) {
+    btn.replaceChildren(t === 'light' ? moonIcon() : sunIcon());
+    btn.setAttribute('aria-label', t === 'light' ? 'Switch to dark mode' : 'Switch to light mode');
+  }
+}
+
+function ensureThemeSideToggle() {
+  if (document.getElementById('theme-toggle')) return;
+
+  const btn = el(
+    'button',
+    {
+      id: 'theme-toggle',
+      class: 'theme-toggle',
+      type: 'button',
+      onclick: () => {
+        const next = document.body.classList.contains('theme-light') ? 'dark' : 'light';
+        setTheme(next);
+      },
+      'aria-label': 'Switch to light mode',
+    },
+    []
+  );
+
+  document.body.appendChild(btn);
+  setTheme(getTheme());
 }
 
 export function textBlock(text) {
