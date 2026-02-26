@@ -438,10 +438,17 @@ body::before {
 body.page-about .content-card {
   border: 0;
   background: transparent;
+  padding: 26px 6px 22px;
+}
+
+body.page-practical .content-card {
+  border: 0;
+  background: transparent;
+  padding: 26px 6px 22px;
 }
 
 .content-card-title {
-  margin: 0 0 10px;
+  margin: 0 0 18px;
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -514,18 +521,21 @@ body.page-about .content-card {
 }
 
 .bio {
-  border: var(--thin) solid var(--ink);
-  border-radius: var(--radius);
-  padding: 18px;
-  background: rgba(10, 18, 16, 0.62);
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  max-width: 980px;
+  margin: 0 auto;
 }
 
 .bio h1 {
   margin: 0 0 8px;
-  font-size: clamp(20px, 2.8vw, 34px);
+  font-size: clamp(12px, 1.4vw, 18px);
   line-height: 1.04;
+  text-align: center;
   letter-spacing: 0.01em;
-  text-transform: none;
+  text-transform: uppercase;
   font-weight: 300;
 }
 
@@ -534,6 +544,7 @@ body.page-about .content-card {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   opacity: 0.7;
+  text-align: center;
 }
 
 .bio p {
@@ -929,7 +940,7 @@ body.page-about .content-card {
   margin-top: 8px;
   opacity: 0.88;
   object-fit: cover;
-  max-height: 180px;
+  max-height: 420px;
 }
 
 .card--has-img .card-meta {

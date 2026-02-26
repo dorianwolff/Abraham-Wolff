@@ -5,7 +5,6 @@ export async function renderAbout(app) {
   mountPage(
     app,
     {
-      title: t('about.title'),
       navActive: 'about',
       bodyClass: 'page-about',
     },

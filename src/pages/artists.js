@@ -2,6 +2,57 @@ import { loadArtists } from '../data.js';
 import { mountPage, el } from '../ui.js';
 import { t } from '../i18n.js';
 
+function artistImageElement(artist) {
+  const name = artist?.name || '';
+  const slug = artist?.slug || '';
+  const base = './Images/artists/';
+  const exts = ['.jpg', '.jpeg', '.png', '.webp'];
+
+  const candidates = [];
+  const nameNfc = name.normalize ? name.normalize('NFC') : name;
+  const nameNfd = name.normalize ? name.normalize('NFD') : name;
+  const slugNfc = slug.normalize ? slug.normalize('NFC') : slug;
+  const slugNfd = slug.normalize ? slug.normalize('NFD') : slug;
+
+  const bases = [name, nameNfc, nameNfd, slug, slugNfc, slugNfd].filter(Boolean);
+  for (const ext of exts) {
+    for (const b of bases) {
+      const filename = `${b}${ext}`;
+      candidates.push(`${base}${encodeURI(filename)}`);
+    }
+  }
+
+  if (candidates.length === 0) return null;
+
+  const img = el('img', {
+    class: 'card-img',
+    alt: name || artist?.slug || '',
+    loading: 'lazy',
+    decoding: 'async',
+  });
+
+  img.style.display = 'none';
+
+  (async () => {
+    for (let i = 0; i < candidates.length; i += 1) {
+      const url = candidates[i];
+      try {
+        const res = await fetch(url, { method: 'HEAD', cache: 'force-cache' });
+        if (!res.ok) continue;
+        img.src = url;
+        img.style.display = '';
+        return;
+      } catch {
+        // ignore and keep trying candidates
+      }
+    }
+
+    img.remove();
+  })();
+
+  return img;
+}
+
 function attachTilt(card) {
   if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) return;
 
@@ -66,7 +117,6 @@ export async function renderArtists(app) {
   mountPage(
     app,
     {
-      title: t('artists.title'),
       navActive: 'artists',
     },
     [grid]
@@ -105,6 +155,9 @@ export async function renderArtists(app) {
           loading: 'lazy',
         })
       );
+    } else {
+      const img = artistImageElement(artist);
+      if (img) cardChildren.push(img);
     }
 
     cardChildren.push(
@@ -136,6 +189,8 @@ export async function renderArtists(app) {
       },
       cardChildren
     );
+
+    if (card.querySelector('.card-img')) card.classList.add('card--has-img');
 
     card.style.setProperty('--i', String(idx));
     card.style.setProperty('--offsetY', `${offset}px`);

@@ -5,8 +5,8 @@ export async function renderPracticalInfo(app) {
   mountPage(
     app,
     {
-      title: t('practical.title'),
       navActive: 'practical',
+      bodyClass: 'page-practical',
     },
     [
       sectionCard(t('practical.contact_title'), [
