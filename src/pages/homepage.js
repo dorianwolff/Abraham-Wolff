@@ -36,6 +36,7 @@ export async function renderHomepage(app) {
     app,
     {
       navActive: 'home',
+      showCredit: true,
     },
     [
       showTitle,

@@ -61,6 +61,8 @@ const DICT = {
 
     'pdf.download': 'Download',
     'pdf.open': 'Open',
+
+    'site.credit': 'Website designed by Dorian Ellwyn Wolff',
   },
   fr: {
     'lang.label': 'Langue',
@@ -123,6 +125,8 @@ const DICT = {
 
     'pdf.download': 'Télécharger',
     'pdf.open': 'Ouvrir',
+
+    'site.credit': 'Site web conçu par Dorian Ellwyn Wolff',
   },
 };
 

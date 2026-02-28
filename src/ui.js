@@ -14,7 +14,7 @@ export function el(tag, attrs = {}, children = []) {
   return node;
 }
 
-export function mountPage(app, { title, subtitle, navActive, bodyClass } = {}, contentChildren = []) {
+export function mountPage(app, { title, subtitle, navActive, bodyClass, showCredit } = {}, contentChildren = []) {
   app.innerHTML = '';
 
   const prev = document.body.dataset.pageTheme;
@@ -40,6 +40,11 @@ export function mountPage(app, { title, subtitle, navActive, bodyClass } = {}, c
 
   const page = el('div', { class: 'page' }, contentChildren);
   shell.appendChild(page);
+
+  if (showCredit) {
+    const credit = el('footer', { class: 'site-credit' }, [t('site.credit')]);
+    shell.appendChild(credit);
+  }
   app.appendChild(shell);
 }
 

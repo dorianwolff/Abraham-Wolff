@@ -7,6 +7,7 @@ export async function renderAbout(app) {
     {
       navActive: 'about',
       bodyClass: 'page-about',
+      showCredit: true,
     },
     [
       sectionCard(t('about.curators_title'), [
