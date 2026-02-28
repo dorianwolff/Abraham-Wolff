@@ -21,6 +21,9 @@ export function arrowWheel(names, { size = 720, radius = 310 } = {}) {
   const ns = Array.isArray(names) ? names.filter(Boolean) : [];
   const count = Math.max(1, ns.length);
 
+  const SHOW_NAME = 'Da capo sine fine';
+  const trim = 0.113;
+
   const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svg.setAttribute('class', 'arrow-wheel-svg');
   svg.setAttribute('viewBox', '0 0 1000 1000');
@@ -41,7 +44,7 @@ export function arrowWheel(names, { size = 720, radius = 310 } = {}) {
   arrow.setAttribute('d', 'M0,0 L8,3 L0,6');
   arrow.setAttribute('fill', 'none');
   arrow.setAttribute('stroke', 'currentColor');
-  arrow.setAttribute('stroke-width', '1.6');
+  arrow.setAttribute('stroke-width', '1.9');
   marker.appendChild(arrow);
   defs.appendChild(marker);
   svg.appendChild(defs);
@@ -72,19 +75,20 @@ export function arrowWheel(names, { size = 720, radius = 310 } = {}) {
 
     const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
     path.setAttribute('class', 'arrow-wheel-arc');
-    path.setAttribute('d', arcPath(cx, cy, radius, a0 + 0.02, a1 - 0.02));
+    path.setAttribute('d', arcPath(cx, cy, radius, a0 + trim, a1 - trim));
     path.setAttribute('fill', 'none');
     path.setAttribute('stroke', 'currentColor');
-    path.setAttribute('stroke-width', '1.2');
+    path.setAttribute('stroke-width', '1.55');
     path.setAttribute('marker-end', 'url(#arrowHead)');
     gArcs.appendChild(path);
     arcEls.push(path);
     arcAngles.push([a0, a1]);
 
     const mid = (a0 + a1) / 2;
-    const p = polar(cx, cy, radius + 34, mid);
+    const isShow = (ns[i] || '') === SHOW_NAME;
+    const p = polar(cx, cy, radius + (isShow ? 46 : 34), mid);
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-    text.setAttribute('class', 'arrow-wheel-name arrow-wheel-label');
+    text.setAttribute('class', isShow ? 'arrow-wheel-name arrow-wheel-label arrow-wheel-name--show' : 'arrow-wheel-name arrow-wheel-label');
     text.setAttribute('x', p.x.toFixed(2));
     text.setAttribute('y', p.y.toFixed(2));
     text.setAttribute('text-anchor', 'middle');
@@ -113,13 +117,14 @@ export function arrowWheel(names, { size = 720, radius = 310 } = {}) {
         const el = arcEls[i];
         const a0 = arcAngles[i][0] + rotRad;
         const a1 = arcAngles[i][1] + rotRad;
-        el.setAttribute('d', arcPath(cx, cy, radius, a0 + 0.02, a1 - 0.02));
+        el.setAttribute('d', arcPath(cx, cy, radius, a0 + trim, a1 - trim));
       }
 
       for (let i = 0; i < labelEls.length; i += 1) {
         const el = labelEls[i];
         const mid = labelAngles[i] + rotRad;
-        const p = polar(cx, cy, radius + 34, mid);
+        const isShow = (el.textContent || '') === SHOW_NAME;
+        const p = polar(cx, cy, radius + (isShow ? 46 : 34), mid);
         el.setAttribute('x', p.x.toFixed(2));
         el.setAttribute('y', p.y.toFixed(2));
         el.removeAttribute('transform');

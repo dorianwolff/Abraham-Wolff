@@ -18,7 +18,11 @@ export async function renderPracticalInfo(app) {
         ]),
       ]),
       sectionCard(t('practical.links_title'), [
-        el('div', { class: 'link-row' }, [externalLink(t('practical.email'), 'mailto:'), el('span', { class: 'link-sep' }, ['·']), externalLink(t('practical.website'), '')]),
+        el('div', { class: 'link-row' }, [
+          externalLink(t('practical.email'), 'mailto:'),
+          el('span', { class: 'link-sep' }, ['·']),
+          externalLink(t('practical.abraham_wolff_website'), 'https://www.abraham-wolff.com/accueil/'),
+        ]),
       ]),
     ]
   );

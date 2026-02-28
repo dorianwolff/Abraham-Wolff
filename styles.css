@@ -49,6 +49,8 @@ body.theme-light {
 
   background-color: var(--bg);
   background-image:
+    repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.018) 0px, rgba(0, 0, 0, 0) 2px, rgba(0, 0, 0, 0) 6px),
+    repeating-linear-gradient(90deg, rgba(0, 0, 0, 0.012) 0px, rgba(0, 0, 0, 0) 3px, rgba(0, 0, 0, 0) 8px),
     radial-gradient(1200px 900px at 16% 22%, rgba(255, 255, 255, 0.82), rgba(255, 255, 255, 0) 62%),
     radial-gradient(900px 760px at 76% 30%, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0) 62%),
     radial-gradient(1100px 900px at 52% 86%, rgba(0, 0, 0, 0.08), rgba(0, 0, 0, 0) 62%),
@@ -230,6 +232,11 @@ body.theme-light::before {
     opacity 300ms var(--ease);
 }
 
+.theme-toggle svg,
+.lang-toggle svg {
+  display: block;
+}
+
 .nav-link:hover {
   transform: translate3d(0, -1px, 0);
   opacity: 1;
@@ -238,6 +245,10 @@ body.theme-light::before {
 .nav-link.is-active {
   opacity: 1;
   color: var(--text);
+}
+
+body.theme-light .nav-link.is-active {
+  font-weight: 700;
 }
 
 .lang-toggle {
@@ -944,6 +955,13 @@ body.theme-light .arrow-wheel-svg {
   fill: currentColor;
 }
 
+.arrow-wheel-name--show {
+  font-size: 26px;
+  font-style: italic;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
 .arrow-wheel-arc {
   opacity: 0.9;
 }
@@ -1001,6 +1019,15 @@ body.theme-light .arrow-wheel-svg {
   opacity: 0.7;
   margin-top: -14px;
   margin-bottom: 22px;
+}
+
+.home-show-title {
+  text-align: center;
+  font-size: clamp(22px, 3.6vw, 46px);
+  line-height: 1.04;
+  letter-spacing: 0.01em;
+  text-transform: none;
+  margin: 4px 0 10px;
 }
 
 .curators {

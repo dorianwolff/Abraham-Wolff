@@ -139,7 +139,7 @@ function moonIcon() {
   svg.setAttribute('stroke-linejoin', 'round');
 
   const p = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-  p.setAttribute('d', 'M21 12.8A8.5 8.5 0 0 1 11.2 3a6.9 6.9 0 1 0 9.8 9.8Z');
+  p.setAttribute('d', 'M21 12.1A9 9 0 1 1 11.9 3a7 7 0 0 0 9.1 9.1Z');
   svg.appendChild(p);
   return svg;
 }

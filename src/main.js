@@ -20,63 +20,85 @@ let glyphAnimRaf = 0;
 
 initI18n();
 
+let dotCursorReady = false;
+let dotCursorEl = null;
+let dotX = window.innerWidth / 2;
+let dotY = window.innerHeight / 2;
+let dotPending = false;
+
+function createDotCursorEl() {
+  if (dotCursorEl) return;
+  dotCursorEl = document.createElement('div');
+  dotCursorEl.id = 'cursor-dot';
+  document.body.appendChild(dotCursorEl);
+  document.body.classList.add('has-dot-cursor');
+}
+
+function removeDotCursorEl() {
+  if (!dotCursorEl) return;
+  dotCursorEl.remove();
+  dotCursorEl = null;
+  document.body.classList.remove('has-dot-cursor');
+}
+
 function initDotCursor() {
   const supportsFinePointer =
     window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (!supportsFinePointer) return;
 
-  if (document.getElementById('cursor-dot')) return;
+  if (dotCursorReady) {
+    createDotCursorEl();
+    return;
+  }
 
-  document.body.classList.add('has-dot-cursor');
-
-  const dot = document.createElement('div');
-  dot.id = 'cursor-dot';
-  document.body.appendChild(dot);
-
-  let x = window.innerWidth / 2;
-  let y = window.innerHeight / 2;
-  let pending = false;
+  dotCursorReady = true;
+  createDotCursorEl();
 
   const render = () => {
-    pending = false;
-    dot.style.transform = `translate3d(${x}px, ${y}px, 0) translate3d(-50%, -50%, 0)`;
+    dotPending = false;
+    if (!dotCursorEl) return;
+    dotCursorEl.style.transform = `translate3d(${dotX}px, ${dotY}px, 0) translate3d(-50%, -50%, 0)`;
   };
 
-  const onMove = (ev) => {
-    x = ev.clientX;
-    y = ev.clientY;
-    if (!pending) {
-      pending = true;
-      requestAnimationFrame(render);
-    }
-  };
+  window.addEventListener(
+    'pointermove',
+    (ev) => {
+      dotX = ev.clientX;
+      dotY = ev.clientY;
+      if (!dotPending) {
+        dotPending = true;
+        requestAnimationFrame(render);
+      }
+    },
+    { passive: true }
+  );
 
-  window.addEventListener('pointermove', onMove, { passive: true });
   window.addEventListener(
     'pointerdown',
     () => {
-      dot.classList.add('is-down');
+      if (dotCursorEl) dotCursorEl.classList.add('is-down');
     },
     { passive: true }
   );
   window.addEventListener(
     'pointerup',
     () => {
-      dot.classList.remove('is-down');
+      if (dotCursorEl) dotCursorEl.classList.remove('is-down');
     },
     { passive: true }
   );
+
   window.addEventListener(
     'pointerleave',
     () => {
-      dot.style.opacity = '0';
+      removeDotCursorEl();
     },
     { passive: true }
   );
   window.addEventListener(
     'pointerenter',
     () => {
-      dot.style.opacity = '';
+      createDotCursorEl();
     },
     { passive: true }
   );

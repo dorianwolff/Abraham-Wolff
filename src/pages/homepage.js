@@ -13,11 +13,14 @@ export async function renderHomepage(app) {
     'Dilara Koz',
     'Adrien Lagrange',
     'Seung Won Kwon',
+    'Da capo sine fine',
     'Patricio Lima Quintana',
     'Lyz Parayzo',
     'Hanna Rochereau',
     'Mick Schmitt',
   ];
+
+  const showTitle = el('div', { class: 'home-show-title grad-text' }, [t('da_capo.title')]);
 
   const heroWrap = arrowWheel(names);
 
@@ -35,6 +38,7 @@ export async function renderHomepage(app) {
       navActive: 'home',
     },
     [
+      showTitle,
       heroWrap,
       dates,
     ]

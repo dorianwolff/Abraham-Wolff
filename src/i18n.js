@@ -52,6 +52,7 @@ const DICT = {
     'practical.links_title': 'Links',
     'practical.email': 'Email',
     'practical.website': 'Website',
+    'practical.abraham_wolff_website': 'Abraham & Wolff website',
 
     'section.about': 'About',
     'section.text': 'Text',
@@ -113,6 +114,7 @@ const DICT = {
     'practical.links_title': 'Liens',
     'practical.email': 'Email',
     'practical.website': 'Site web',
+    'practical.abraham_wolff_website': 'Site web Abraham & Wolff',
 
     'section.about': 'À propos',
     'section.text': 'Texte',
