@@ -24,7 +24,7 @@ export async function renderPracticalInfo(app) {
             el('div', { class: 'info-v' }, ['14.03.2026 - 09.05.2026']),
           ]),
           el('div', { class: 'info-row' }, [
-            el('div', { class: 'info-k' }, [t('practical.contact')]),
+            el('div', { class: 'info-k' }, [t('practical.timings')]),
             el('div', { class: 'info-v' }, ['Tuesday 11am - 6pm, Wednesday - Saturday 11am - 7pm']),
           ]),
         ]),
