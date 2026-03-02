@@ -412,6 +412,12 @@ function getGlyphScrollProgress() {
 function renderGlyphs(p) {
   const progress = clamp01(p);
 
+  if (!glyphPaths.length) {
+    glyphs.style.opacity = '0';
+    glyphs.style.transform = `translate3d(0, 0px, 0) scale(1)`;
+    return;
+  }
+
   if (rootDot) {
     const dotFade = 1 - clamp01((progress - (START_PHASE - 0.04)) / 0.14);
     rootDot.style.opacity = String(dotFade);
@@ -429,7 +435,7 @@ function renderGlyphs(p) {
     return;
   }
 
-  const n = Math.max(1, glyphPaths.length);
+  const n = glyphPaths.length;
   const span = 0.92;
 
   for (let i = 0; i < n; i += 1) {

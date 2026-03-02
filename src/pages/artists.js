@@ -6,7 +6,7 @@ function artistImageElement(artist) {
   const name = artist?.name || '';
   const slug = artist?.slug || '';
   const base = './Images/artists/';
-  const exts = ['.jpg', '.jpeg', '.png', '.webp'];
+  const exts = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP', '.tif', '.tiff', '.TIF', '.TIFF'];
 
   const candidates = [];
   const nameNfc = name.normalize ? name.normalize('NFC') : name;
@@ -147,14 +147,18 @@ export async function renderArtists(app) {
     ];
 
     if (artist.cardImage) {
-      cardChildren.push(
-        el('img', {
-          class: 'card-img',
-          src: artist.cardImage,
-          alt: artist.name || artist.slug,
-          loading: 'lazy',
-        })
-      );
+      const img = el('img', {
+        class: 'card-img',
+        src: artist.cardImage,
+        alt: artist.name || artist.slug,
+        loading: 'lazy',
+      });
+      img.addEventListener('error', () => {
+        img.remove();
+        const parent = img.closest ? img.closest('article') : null;
+        if (parent) parent.classList.remove('card--has-img');
+      });
+      cardChildren.push(img);
     } else {
       const img = artistImageElement(artist);
       if (img) cardChildren.push(img);

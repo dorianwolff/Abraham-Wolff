@@ -20,9 +20,7 @@ export async function renderHomepage(app) {
     'Mick Schmitt',
   ];
 
-  const showTitle = el('div', { class: 'home-show-title grad-text' }, [t('da_capo.title')]);
-
-  const heroWrap = arrowWheel(names);
+  const heroWrap = arrowWheel(names, { radius: 314 });
 
   const dateParts = String(t('home.dates')).split('\n');
   const dateChildren = [];
@@ -36,10 +34,10 @@ export async function renderHomepage(app) {
     app,
     {
       navActive: 'home',
+      bodyClass: 'page-home',
       showCredit: true,
     },
     [
-      showTitle,
       heroWrap,
       dates,
     ]

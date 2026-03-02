@@ -19,14 +19,16 @@
       "name": "Anna de Castro Barbosa",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/AnnaBarbosa.JPG"
     },
     {
       "slug": "juan-gugger",
       "name": "Juan Gugger",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Juan%20Gugger.jpeg"
     },
     {
       "slug": "helene-janicot",
@@ -40,21 +42,24 @@
       "name": "Dilara Koz",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Dilara%20Koz.jpg"
     },
     {
       "slug": "seung-won-kwon",
       "name": "Seung Won Kwon",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Seung%20Won%20Kwon.jpeg"
     },
     {
       "slug": "adrien-lagrange",
       "name": "Adrien Lagrange",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Adrien%20Lagrange.jpg"
     },
     {
       "slug": "patricio-lima-quintana",
@@ -68,7 +73,8 @@
       "name": "Lyz Parayzo",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Lyz%20Parayzo.jpg"
     },
     {
       "slug": "hanna-rochereau",
@@ -82,7 +88,8 @@
       "name": "Mick Schmitt",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Mick%20Schmitt.jpeg"
     },
     {
       "slug": "taras",

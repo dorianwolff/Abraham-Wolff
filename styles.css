@@ -331,6 +331,21 @@ body.theme-light .nav-link.is-active {
     text-align: center;
   }
 
+  body.page-home .site-credit,
+  body.page-about .site-credit {
+    position: fixed;
+    bottom: 18px;
+    left: 22px;
+    z-index: 6;
+    margin-top: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    text-align: left;
+    writing-mode: horizontal-tb;
+    transform: none;
+    pointer-events: none;
+  }
+
   .lang-toggle {
     right: 10px;
     width: 46px;
@@ -554,6 +569,12 @@ body.theme-light .nav-link.is-active {
   text-transform: uppercase;
   opacity: 0.55;
   color: var(--text);
+}
+
+body.page-home .site-credit,
+body.page-about .site-credit {
+  writing-mode: horizontal-tb;
+  transform: none;
 }
 
 body.theme-light .site-credit {
@@ -999,7 +1020,7 @@ body.theme-light .arrow-wheel-svg {
 }
 
 .arrow-wheel-name--show {
-  font-size: 26px;
+  font-size: 31px;
   font-style: italic;
   font-weight: 700;
   letter-spacing: 0.01em;
@@ -1082,9 +1103,24 @@ body.theme-light .arrow-wheel-svg {
   gap: 6px;
 }
 
+.curators-media {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+}
+
+.curators-img {
+  width: min(170px, 100%);
+  height: auto;
+  border: var(--thin) solid var(--ink);
+  border-radius: calc(var(--radius) - 8px);
+  background: rgba(255, 255, 255, 0.65);
+}
+
 .curators-names {
   font-size: 15px;
   letter-spacing: 0.08em;
+  text-align: center;
 }
 
 .bio-birth {
