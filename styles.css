@@ -625,8 +625,17 @@ body.page-about .content-card {
   width: 240px;
   height: 240px;
   object-fit: cover;
+  object-position: 50% 50%;
   border-radius: 0;
   display: block;
+}
+
+.curator-img--julia {
+  object-position: 50% 15%;
+}
+
+body.page-artists img.card-img[src*="AnnaBarbosa"] {
+  object-position: 50% 15%;
 }
 
 .curator-name {
@@ -1011,6 +1020,13 @@ body.theme-light .pdf-frame {
 
 .expo-watermark:hover {
   opacity: 0.85;
+}
+
+@media (max-width: 560px) {
+  body.page-about .expo-watermark,
+  body.page-artists .expo-watermark {
+    display: none;
+  }
 }
 
 .hero-img-wrap {

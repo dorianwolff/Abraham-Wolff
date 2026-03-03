@@ -20,7 +20,7 @@ export async function renderPracticalInfo(app) {
           ]),
           el('div', { class: 'info-row' }, [
             el('div', { class: 'info-k' }, [t('practical.phone')]),
-            el('div', { class: 'info-v' }, ['+33 786 0457 23']),
+            el('div', { class: 'info-v' }, ['+33 9 52 94 52 97']),
           ]),
           el('div', { class: 'info-row' }, [
             el('div', { class: 'info-k' }, [t('practical.dates')]),

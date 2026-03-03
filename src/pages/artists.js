@@ -118,12 +118,20 @@ export async function renderArtists(app) {
     app,
     {
       navActive: 'artists',
+      bodyClass: 'page-artists',
     },
     [grid]
   );
 
   const data = await loadArtists();
   const artists = Array.isArray(data?.artists) ? data.artists : [];
+  const shuffledArtists = [...artists];
+  for (let i = shuffledArtists.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const tmp = shuffledArtists[i];
+    shuffledArtists[i] = shuffledArtists[j];
+    shuffledArtists[j] = tmp;
+  }
 
   window.dispatchEvent(
     new CustomEvent('catalog:count', {
@@ -134,8 +142,8 @@ export async function renderArtists(app) {
   const cards = [];
   const baseOffsets = [0, 46, 18, 62, 30, 78];
 
-  for (let idx = 0; idx < artists.length; idx += 1) {
-    const artist = artists[idx];
+  for (let idx = 0; idx < shuffledArtists.length; idx += 1) {
+    const artist = shuffledArtists[idx];
     const offset = baseOffsets[idx % baseOffsets.length];
     const wobble = (idx % 2 === 0 ? -1 : 1) * Math.min(10, 3 + idx);
 

@@ -2,10 +2,10 @@ import { mountPage, sectionCard, textBlock, el } from '../ui.js';
 import { t } from '../i18n.js';
 
 export async function renderAbout(app) {
-  const curatorBlock = ({ name, imgSrc, alt }) =>
+  const curatorBlock = ({ name, imgSrc, alt, imgClass }) =>
     el('div', { class: 'curator' }, [
       el('img', {
-        class: 'curator-img',
+        class: imgClass ? `curator-img ${imgClass}` : 'curator-img',
         src: imgSrc,
         alt,
         loading: 'lazy',
@@ -21,11 +21,13 @@ export async function renderAbout(app) {
       name: 'Julia Tavares',
       imgSrc: './Images/artists/Julia%20Tavares%20(curator).JPG',
       alt: 'Julia Tavares',
+      imgClass: 'curator-img--julia',
     }),
     curatorBlock({
       name: 'Amalia Mytilineou',
       imgSrc: './Images/artists/Amalia%20Mytilineou%20(curator).jpeg',
       alt: 'Amalia Mytilineou',
+      imgClass: 'curator-img--amalia',
     }),
   ];
   if (Math.random() < 0.5) curators.reverse();
