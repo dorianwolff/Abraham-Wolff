@@ -1020,6 +1020,15 @@ body.theme-light .arrow-wheel-svg {
     text-align: left;
     pointer-events: none;
   }
+
+  body.page-about .site-credit {
+    display: none;
+  }
+
+  body.page-home .site-credit {
+    font-size: 5.5px;
+    letter-spacing: 0.1em;
+  }
 }
 
 .arrow-wheel-arc {

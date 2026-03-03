@@ -20,7 +20,7 @@ export async function renderAbout(app) {
               loading: 'lazy',
             }),
           ]),
-          el('div', { class: 'curators-names' }, ['Julia Julia Tavares', ' ', '&', ' ', 'Amalia Mytilineou']),
+          el('div', { class: 'curators-names' }, ['Julia Tavares', ' ', '&', ' ', 'Amalia Mytilineou']),
         ]),
       ]),
       sectionCard(t('section.about'), [
