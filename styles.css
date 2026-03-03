@@ -578,6 +578,78 @@ body.page-about .content-card {
   padding: 26px 6px 22px;
 }
 
+@media (min-width: 760px) {
+  body.page-about .content-card {
+    padding-top: 5px;
+  }
+
+  body.page-about .curators {
+    gap: 72px;
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 44px;
+}
+
+@media (min-width: 760px) {
+  .about-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 70px;
+    align-items: start;
+  }
+
+  .about-col--curators {
+    grid-column: 1;
+  }
+
+  .about-col--exhibition {
+    grid-column: 2;
+  }
+}
+
+.curator {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: 22px;
+  align-items: start;
+}
+
+.curator-meta {
+  min-width: 0;
+}
+
+.curator-img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 0;
+  display: block;
+}
+
+.curator-name {
+  font-size: 15px;
+  letter-spacing: 0.08em;
+}
+
+.curator-text {
+  margin-top: 6px;
+}
+
+@media (max-width: 560px) {
+  .curator {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .curator-img {
+    width: min(260px, 100%);
+    height: auto;
+  }
+}
+
 body.page-practical .content-card {
   border: 0;
   background: transparent;
