@@ -560,6 +560,11 @@ body.theme-light .site-credit {
   opacity: 0.5;
 }
 
+body.page-practical .info-v a,
+body.page-practical .info-v a:visited {
+  color: var(--text);
+}
+
 .content-card {
   border: var(--thin) solid var(--ink);
   border-radius: var(--radius);
@@ -1006,28 +1011,35 @@ body.theme-light .arrow-wheel-svg {
 }
 
 @media (max-width: 560px) {
-  body.page-home .site-credit,
-  body.page-about .site-credit {
-    position: fixed;
-    bottom: 18px;
-    left: 22px;
-    z-index: 6;
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
-    margin-top: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    text-align: left;
-    pointer-events: none;
-  }
-
-  body.page-about .site-credit {
+  body.page-home .site-credit {
     display: none;
   }
+}
 
-  body.page-home .site-credit {
-    font-size: 5.5px;
-    letter-spacing: 0.1em;
+.practical-contrib {
+  display: none;
+  margin-top: 14px;
+  text-align: left;
+}
+
+.practical-contrib-title {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.practical-contrib-text {
+  margin-top: 6px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+}
+
+@media (max-width: 560px) {
+  body.page-practical .practical-contrib {
+    display: block;
+    margin-top: 34px;
   }
 }
 

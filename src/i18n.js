@@ -7,7 +7,7 @@ const DICT = {
     'lang.fr': 'FR',
 
     'nav.home': 'Home',
-    'nav.about': 'About us',
+    'nav.about': 'About',
     'nav.da_capo': 'Da capo sine fine',
     'nav.exhibition_text': 'Exhibition text',
     'nav.bibliography': 'Bibliography',
@@ -24,7 +24,7 @@ const DICT = {
     'home.tile_practical_title': 'Practical info',
     'home.tile_practical_sub': 'Address, dates, contact',
 
-    'about.title': 'About us',
+    'about.title': 'About',
     'about.curators_title': 'Curators',
 
     'da_capo.title': 'Da capo sine fine',
@@ -51,6 +51,7 @@ const DICT = {
     'practical.timings': 'Timings',
     'practical.contact': 'Opening times',
     'practical.links_title': 'Links',
+    'practical.contributions': 'Contributions',
     'practical.email': 'Email',
     'practical.website': 'Website',
     'practical.abraham_wolff_website': 'Abraham & Wolff website',
@@ -116,6 +117,7 @@ const DICT = {
     'practical.timings': 'Horaires',
     'practical.contact': 'Horaires',
     'practical.links_title': 'Liens',
+    'practical.contributions': 'Contributions',
     'practical.email': 'Email',
     'practical.website': 'Site web',
     'practical.abraham_wolff_website': 'Site web Abraham & Wolff',

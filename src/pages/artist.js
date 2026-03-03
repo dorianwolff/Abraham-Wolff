@@ -46,8 +46,16 @@ export async function renderArtist(app, { slug }) {
     const lang = getLang();
     const byLang = bio?.bios && typeof bio.bios === 'object' ? bio.bios : null;
     const candidate = byLang ? byLang[lang] : null;
-    const paras = Array.isArray(candidate) ? candidate : Array.isArray(bio?.paragraphs) ? bio.paragraphs : [];
-    return paras.filter(Boolean);
+
+    const pick = (v) => (Array.isArray(v) ? v.filter(Boolean) : []);
+    const primary = pick(candidate);
+    if (primary.length) return primary;
+
+    const fallbackLang = lang === 'fr' ? 'en' : 'fr';
+    const secondary = pick(byLang ? byLang[fallbackLang] : null);
+    if (secondary.length) return secondary;
+
+    return pick(Array.isArray(bio?.paragraphs) ? bio.paragraphs : []);
   };
 
   const pageChildren = [];
