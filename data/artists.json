@@ -6,7 +6,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Oscar%20Bony.jpg"
+      "cardImage": "./Images/artists/oscar-bony.jpg"
     },
     {
       "slug": "camille-bree",
@@ -14,7 +14,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Camille%20Bre%CC%81e.jpg"
+      "cardImage": "./Images/artists/camille-bree.jpg"
     },
     {
       "slug": "anna-de-castro-barbosa",
@@ -22,7 +22,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/AnnaBarbosa.JPG"
+      "cardImage": "./Images/artists/anna-de-castro-barbosa.jpg"
     },
     {
       "slug": "juan-gugger",
@@ -30,7 +30,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Juan%20Gugger.jpeg"
+      "cardImage": "./Images/artists/juan-gugger.jpeg"
     },
     {
       "slug": "helene-janicot",
@@ -38,7 +38,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/He%CC%81le%CC%80ne%20Janicot.jpg"
+      "cardImage": "./Images/artists/helene-janicot.jpg"
     },
     {
       "slug": "dilara-koz",
@@ -46,7 +46,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Dilara%20Koz.jpg"
+      "cardImage": "./Images/artists/dilara-koz.jpg"
     },
     {
       "slug": "seung-won-kwon",
@@ -54,7 +54,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Seung%20Won%20Kwon.jpeg"
+      "cardImage": "./Images/artists/seung-won-kwon.jpeg"
     },
     {
       "slug": "adrien-lagrange",
@@ -62,7 +62,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Adrien%20Lagrange.jpg"
+      "cardImage": "./Images/artists/adrien-lagrange.jpg"
     },
     {
       "slug": "patricio-lima-quintana",
@@ -70,7 +70,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Patricio%20Lima%20Quintana.jpeg"
+      "cardImage": "./Images/artists/patricio-lima-quintana.jpeg"
     },
     {
       "slug": "lyz-parayzo",
@@ -78,7 +78,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Lyz%20Parayzo.jpg"
+      "cardImage": "./Images/artists/lyz-parayzo.jpg"
     },
     {
       "slug": "hanna-rochereau",
@@ -86,7 +86,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Hanna%20Rochereau.jpg"
+      "cardImage": "./Images/artists/hanna-rochereau.jpg"
     },
     {
       "slug": "mick-schmitt",
@@ -94,7 +94,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Mick%20Schmitt.jpeg"
+      "cardImage": "./Images/artists/mick-schmitt.jpeg"
     },
     {
       "slug": "taras",
@@ -102,7 +102,7 @@
       "years": "",
       "discipline": "",
       "origin": "",
-      "cardImage": "./Images/artists/Taras.jpeg"
+      "cardImage": "./Images/artists/taras.jpeg"
     }
   ]
 }

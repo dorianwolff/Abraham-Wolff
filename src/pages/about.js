@@ -19,13 +19,13 @@ export async function renderAbout(app) {
   const curators = [
     curatorBlock({
       name: 'Julia Tavares',
-      imgSrc: './Images/artists/Julia%20Tavares%20(curator).JPG',
+      imgSrc: './Images/artists/julia-tavares-curator.jpg',
       alt: 'Julia Tavares',
       imgClass: 'curator-img--julia',
     }),
     curatorBlock({
       name: 'Amalia Mytilineou',
-      imgSrc: './Images/artists/Amalia%20Mytilineou%20(curator).jpeg',
+      imgSrc: './Images/artists/amalia-mytilineou-curator.jpeg',
       alt: 'Amalia Mytilineou',
       imgClass: 'curator-img--amalia',
     }),
