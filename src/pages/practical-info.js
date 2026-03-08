@@ -1,9 +1,16 @@
 import { mountPage, sectionCard, textBlock, el, externalLink } from '../ui.js';
-import { t } from '../i18n.js';
+import { getLang, t } from '../i18n.js';
 
 export async function renderPracticalInfo(app) {
   const address = 'Abraham & Wolff, 12 Rue des Saints-Pères, 75007 Paris';
   const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address)}`;
+
+  const lang = getLang();
+  const datesValue = lang === 'fr' ? '14 Mars - 9 Mai, 2026' : '14th March - 9th May, 2026';
+  const timingsValue =
+    lang === 'fr'
+      ? ['Mardi de 11h à 18h', 'Mercredi à Samedi de 11h à 19h']
+      : ['Tuesday 11am - 6pm', 'Wednesday - Saturday 11am - 7pm'];
 
   mountPage(
     app,
@@ -24,14 +31,14 @@ export async function renderPracticalInfo(app) {
           ]),
           el('div', { class: 'info-row' }, [
             el('div', { class: 'info-k' }, [t('practical.dates')]),
-            el('div', { class: 'info-v' }, ['14th March - 9th May, 2026']),
+            el('div', { class: 'info-v' }, [datesValue]),
           ]),
           el('div', { class: 'info-row' }, [
             el('div', { class: 'info-k' }, [t('practical.timings')]),
             el('div', { class: 'info-v' }, [
-              'Tuesday 11am - 6pm',
+              timingsValue[0],
               document.createElement('br'),
-              'Wednesday - Saturday 11am - 7pm',
+              timingsValue[1],
             ]),
           ]),
         ]),
