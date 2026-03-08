@@ -5,14 +5,16 @@
       "name": "Oscar Bony",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Oscar%20Bony.jpg"
     },
     {
       "slug": "camille-bree",
       "name": "Camille Brée",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Camille%20Bre%CC%81e.jpg"
     },
     {
       "slug": "anna-de-castro-barbosa",
@@ -35,7 +37,8 @@
       "name": "Hélène Janicot",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/He%CC%81le%CC%80ne%20Janicot.jpg"
     },
     {
       "slug": "dilara-koz",
@@ -66,7 +69,8 @@
       "name": "Patricio Lima Quintana",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Patricio%20Lima%20Quintana.jpeg"
     },
     {
       "slug": "lyz-parayzo",
@@ -81,7 +85,8 @@
       "name": "Hanna Rochereau",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Hanna%20Rochereau.jpg"
     },
     {
       "slug": "mick-schmitt",
@@ -96,7 +101,8 @@
       "name": "Taras",
       "years": "",
       "discipline": "",
-      "origin": ""
+      "origin": "",
+      "cardImage": "./Images/artists/Taras.jpeg"
     }
   ]
 }

@@ -118,7 +118,11 @@ const router = new Router({
   ],
   onAfterNavigate: () => {
     requestAnimationFrame(() => {
-      window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      if (window.__skipScrollResetOnce) {
+        window.__skipScrollResetOnce = false;
+      } else {
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+      }
       syncGlyphMode();
       if (glyphsEnabled) updateGlyphTargets();
     });

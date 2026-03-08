@@ -2,55 +2,42 @@ import { loadArtists } from '../data.js';
 import { mountPage, el } from '../ui.js';
 import { t } from '../i18n.js';
 
-function artistImageElement(artist) {
-  const name = artist?.name || '';
-  const slug = artist?.slug || '';
-  const base = './Images/artists/';
-  const exts = ['.jpg', '.jpeg', '.png', '.webp', '.JPG', '.JPEG', '.PNG', '.WEBP', '.tif', '.tiff', '.TIF', '.TIFF'];
+const ARTISTS_LISTING_STATE_KEY = 'artistsListingState:v1';
 
-  const candidates = [];
-  const nameNfc = name.normalize ? name.normalize('NFC') : name;
-  const nameNfd = name.normalize ? name.normalize('NFD') : name;
-  const slugNfc = slug.normalize ? slug.normalize('NFC') : slug;
-  const slugNfd = slug.normalize ? slug.normalize('NFD') : slug;
-
-  const bases = [name, nameNfc, nameNfd, slug, slugNfc, slugNfd].filter(Boolean);
-  for (const ext of exts) {
-    for (const b of bases) {
-      const filename = `${b}${ext}`;
-      candidates.push(`${base}${encodeURI(filename)}`);
-    }
+function readListingState() {
+  try {
+    const raw = sessionStorage.getItem(ARTISTS_LISTING_STATE_KEY);
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return null;
+    const order = Array.isArray(parsed.order) ? parsed.order.filter(Boolean) : [];
+    const scrollY = Number(parsed.scrollY);
+    return {
+      order,
+      scrollY: Number.isFinite(scrollY) ? Math.max(0, scrollY) : 0,
+    };
+  } catch {
+    return null;
   }
+}
 
-  if (candidates.length === 0) return null;
+function writeListingState({ order, scrollY }) {
+  try {
+    sessionStorage.setItem(
+      ARTISTS_LISTING_STATE_KEY,
+      JSON.stringify({ order: Array.isArray(order) ? order : [], scrollY: Number(scrollY) || 0 })
+    );
+  } catch {
+    // ignore
+  }
+}
 
-  const img = el('img', {
-    class: 'card-img',
-    alt: name || artist?.slug || '',
-    loading: 'lazy',
-    decoding: 'async',
-  });
-
-  img.style.display = 'none';
-
-  (async () => {
-    for (let i = 0; i < candidates.length; i += 1) {
-      const url = candidates[i];
-      try {
-        const res = await fetch(url, { method: 'HEAD', cache: 'force-cache' });
-        if (!res.ok) continue;
-        img.src = url;
-        img.style.display = '';
-        return;
-      } catch {
-        // ignore and keep trying candidates
-      }
-    }
-
-    img.remove();
-  })();
-
-  return img;
+export function clearArtistsListingState() {
+  try {
+    sessionStorage.removeItem(ARTISTS_LISTING_STATE_KEY);
+  } catch {
+    // ignore
+  }
 }
 
 function attachTilt(card) {
@@ -125,12 +112,33 @@ export async function renderArtists(app) {
 
   const data = await loadArtists();
   const artists = Array.isArray(data?.artists) ? data.artists : [];
-  const shuffledArtists = [...artists];
-  for (let i = shuffledArtists.length - 1; i > 0; i -= 1) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const tmp = shuffledArtists[i];
-    shuffledArtists[i] = shuffledArtists[j];
-    shuffledArtists[j] = tmp;
+
+  const listingState = readListingState();
+  const bySlug = new Map(artists.map((a) => [a?.slug, a]));
+  const restoredArtists = [];
+  if (listingState?.order?.length) {
+    for (const slug of listingState.order) {
+      const a = bySlug.get(slug);
+      if (a) restoredArtists.push(a);
+    }
+  }
+  if (restoredArtists.length) {
+    const used = new Set(restoredArtists.map((a) => a.slug));
+    for (const a of artists) {
+      if (a?.slug && !used.has(a.slug)) restoredArtists.push(a);
+    }
+  }
+
+  const shuffledArtists = restoredArtists.length ? restoredArtists : [...artists];
+  if (!restoredArtists.length) {
+    for (let i = shuffledArtists.length - 1; i > 0; i -= 1) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const tmp = shuffledArtists[i];
+      shuffledArtists[i] = shuffledArtists[j];
+      shuffledArtists[j] = tmp;
+    }
+  } else {
+    window.__skipScrollResetOnce = true;
   }
 
   window.dispatchEvent(
@@ -167,9 +175,6 @@ export async function renderArtists(app) {
         if (parent) parent.classList.remove('card--has-img');
       });
       cardChildren.push(img);
-    } else {
-      const img = artistImageElement(artist);
-      if (img) cardChildren.push(img);
     }
 
     cardChildren.push(
@@ -190,11 +195,19 @@ export async function renderArtists(app) {
         'data-slug': artist.slug,
         'data-side': idx % 2 === 0 ? 'left' : 'right',
         onclick: () => {
+          writeListingState({
+            order: shuffledArtists.map((a) => a.slug).filter(Boolean),
+            scrollY: window.scrollY,
+          });
           window.location.hash = `#/artist/${encodeURIComponent(artist.slug)}`;
         },
         onkeydown: (e) => {
           if (e.key === 'Enter' || e.key === ' ') {
             e.preventDefault();
+            writeListingState({
+              order: shuffledArtists.map((a) => a.slug).filter(Boolean),
+              scrollY: window.scrollY,
+            });
             window.location.hash = `#/artist/${encodeURIComponent(artist.slug)}`;
           }
         },
@@ -215,6 +228,14 @@ export async function renderArtists(app) {
 
   setupScrollReveal(cards);
   publishScrollEnd(cards);
+
+  if (restoredArtists.length) {
+    const y = listingState?.scrollY || 0;
+    requestAnimationFrame(() => {
+      window.scrollTo({ top: y, left: 0, behavior: 'instant' });
+      clearArtistsListingState();
+    });
+  }
 
   if (window.__catalogHomeResizeHandler) {
     window.removeEventListener('resize', window.__catalogHomeResizeHandler);

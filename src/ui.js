@@ -1,5 +1,7 @@
 import { getLang, setLang, t } from './i18n.js';
 
+const ARTISTS_LISTING_STATE_KEY = 'artistsListingState:v1';
+
 export function el(tag, attrs = {}, children = []) {
   const node = document.createElement(tag);
   for (const [k, v] of Object.entries(attrs)) {
@@ -59,8 +61,26 @@ export function siteNav(active) {
   const nav = el('nav', { class: 'nav' });
   const list = el('div', { class: 'nav-links' });
 
+  const clearArtistsListingState = () => {
+    try {
+      sessionStorage.removeItem(ARTISTS_LISTING_STATE_KEY);
+    } catch {
+      // ignore
+    }
+  };
+
   for (const it of items) {
-    const a = el('a', { class: 'nav-link', href: it.href }, [it.label]);
+    const a = el(
+      'a',
+      {
+        class: 'nav-link',
+        href: it.href,
+        onclick: () => {
+          clearArtistsListingState();
+        },
+      },
+      [it.label]
+    );
     if (active && it.key === active) a.classList.add('is-active');
     list.appendChild(a);
   }
