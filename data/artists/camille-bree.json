@@ -18,5 +18,10 @@
   },
   "paragraphs": [],
   "images": [],
-  "pdfs": []
+  "pdfs": [
+    {
+      "title": "Portfolio",
+      "href": "resources/camille-bree.pdf"
+    }
+  ]
 }
