@@ -596,18 +596,19 @@ body.page-about .content-card {
 
 @media (min-width: 760px) {
   .about-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 70px;
     align-items: start;
   }
+}
 
-  .about-col--curators {
-    grid-column: 1;
-  }
+.about-col--exhibition {
+  display: block;
+}
 
-  .about-col--exhibition {
-    grid-column: 2;
-  }
+body.page-about .about-col--exhibition .content-card {
+  max-width: min(980px, 100%);
+  margin: 0;
 }
 
 .curator {
