@@ -13,6 +13,7 @@ const DICT = {
     'nav.bibliography': 'Bibliography',
     'nav.exhibition_views': 'Exhibition views',
     'nav.artists': 'Participating artists',
+    'nav.installation_photos': 'Installation photos',
     'nav.practical': 'Practical info',
 
     'home.subtitle': 'Catalog',
@@ -34,6 +35,9 @@ const DICT = {
     'bibliography.title': 'Bibliography / reference texts',
 
     'exhibition_views.title': 'Exhibition views',
+
+    'installation_photos.title': 'Installation photos',
+    'installation_photos.credit': 'Photo: Thomas Lannes',
 
     'artists.title': 'Participating artists',
     'artists.open_bio': 'Open bio',
@@ -78,6 +82,7 @@ const DICT = {
     'nav.bibliography': 'Bibliographie',
     'nav.exhibition_views': "Vues de l'exposition",
     'nav.artists': 'Artistes participant\u00b7e\u00b7s',
+    'nav.installation_photos': "Photos d'installation",
     'nav.practical': 'Infos pratiques',
 
     'home.subtitle': 'Catalogue',
@@ -100,6 +105,9 @@ const DICT = {
     'bibliography.title': 'Bibliographie / textes de référence',
 
     'exhibition_views.title': "Vues de l'exposition",
+
+    'installation_photos.title': "Photos d'installation",
+    'installation_photos.credit': 'Photo : Thomas Lannes',
 
     'artists.title': 'Artistes participant\u00b7e\u00b7s',
     'artists.open_bio': 'Ouvrir la bio',
