@@ -3,9 +3,9 @@ import { renderHomepage } from './pages/homepage.js';
 import { renderArtists } from './pages/artists.js';
 import { renderAbout } from './pages/about.js';
 import { renderDaCapo } from './pages/da-capo-sine-fine.js';
+import { renderExhibitionViews } from './pages/exhibition-views.js';
 import { renderPracticalInfo } from './pages/practical-info.js';
 import { renderArtist } from './pages/artist.js';
-import { renderInstallationPhotos } from './pages/installation-photos.js';
 import { initI18n } from './i18n.js';
 
 const app = document.getElementById('app');
@@ -114,7 +114,7 @@ const router = new Router({
     { pattern: '/about', render: () => renderAbout(app) },
     { pattern: '/da-capo-sine-fine', render: () => renderDaCapo(app) },
     { pattern: '/artists', render: () => renderArtists(app) },
-    { pattern: '/installation-photos', render: () => renderInstallationPhotos(app) },
+    { pattern: '/exhibition-views', render: () => renderExhibitionViews(app) },
     { pattern: '/practical-info', render: () => renderPracticalInfo(app) },
     { pattern: '/artist/:slug', render: (params) => renderArtist(app, params) },
   ],

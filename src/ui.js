@@ -55,7 +55,7 @@ export function siteNav(active) {
     { href: '#/', label: t('nav.home'), key: 'home' },
     { href: '#/about', label: t('nav.about'), key: 'about' },
     { href: '#/artists', label: t('nav.artists'), key: 'artists' },
-    { href: '#/installation-photos', label: t('nav.installation_photos'), key: 'installation-photos' },
+    { href: '#/exhibition-views', label: t('nav.exhibition_views'), key: 'exhibition-views' },
     { href: '#/practical-info', label: t('nav.practical'), key: 'practical' },
   ];
 

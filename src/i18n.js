@@ -36,6 +36,14 @@ const DICT = {
 
     'exhibition_views.title': 'Exhibition views',
 
+    'exhibition_views.caption_1': 'Dilara Koz. Photo: Thomas Lannes',
+    'exhibition_views.caption_2': 'From left to right: Hélène Janicot, Anna de Castro Barbosa, Patricio Lima Quintana, Lyz Parayzo.\nPhoto: Thomas Lannes',
+    'exhibition_views.caption_3': 'From left to right: Seung Won Kwon, Anna de Castro Barbosa.\nPhoto: Thomas Lannes',
+    'exhibition_views.caption_4': 'From left to right: Juan Gugger, Hanna Rochereau.\nPhoto: Thomas Lannes',
+    'exhibition_views.caption_5': 'From left to right: Hanna Rochereau, Hélène Janicot, Adrien Lagrange.\nPhoto: Thomas Lannes',
+    'exhibition_views.caption_6': 'From left to right: Mick Schmitt, Taras, Dilara Koz.\nPhoto: Thomas Lannes',
+    'exhibition_views.caption_7': 'From left to right: Oscar Bony, Anna de Castro Barbosa.\nPhoto: Thomas Lannes',
+
     'installation_photos.title': 'Installation photos',
     'installation_photos.credit': 'Photo: Thomas Lannes',
 
@@ -105,6 +113,14 @@ const DICT = {
     'bibliography.title': 'Bibliographie / textes de référence',
 
     'exhibition_views.title': "Vues de l'exposition",
+
+    'exhibition_views.caption_1': 'Dilara Koz. Photo : Thomas Lannes',
+    'exhibition_views.caption_2': 'De gauche à droite : Hélène Janicot, Anna de Castro Barbosa, Patricio Lima Quintana, Lyz Parayzo.\nPhoto : Thomas Lannes',
+    'exhibition_views.caption_3': 'De gauche à droite : Seung Won Kwon, Anna de Castro Barbosa.\nPhoto : Thomas Lannes',
+    'exhibition_views.caption_4': 'De gauche à droite : Juan Gugger, Hanna Rochereau.\nPhoto : Thomas Lannes',
+    'exhibition_views.caption_5': 'De gauche à droite : Hanna Rochereau, Hélène Janicot, Adrien Lagrange.\nPhoto : Thomas Lannes',
+    'exhibition_views.caption_6': 'De gauche à droite : Mick Schmitt, Taras, Dilara Koz.\nPhoto : Thomas Lannes',
+    'exhibition_views.caption_7': 'De gauche à droite : Oscar Bony, Anna de Castro Barbosa.\nPhoto : Thomas Lannes',
 
     'installation_photos.title': "Photos d'installation",
     'installation_photos.credit': 'Photo : Thomas Lannes',
